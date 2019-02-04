@@ -1,8 +1,8 @@
-///////////////////////
+///////////////////////////////////////////////////////////////////////////
 // Dennis forgot his header
-// THis is in the new branch. Now it is in the master. YAY PULL REQUeSTS.
-//Dennis likes to code. He's adding some shit to this group project. And he's gonna fuck it all up.
-///////////////////////21
+// This is in the new branch. Now it is in the master. YAY PULL REQUeSTS.
+// Dennis likes to code. He's adding some stuff to this group project. 
+///////////////////////////////////////////////////////////////////////////
 
 public class ApexP0Exercises {
     
