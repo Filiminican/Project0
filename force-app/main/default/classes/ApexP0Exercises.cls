@@ -91,13 +91,6 @@ public class ApexP0Exercises {
 
         return array2;
     }
-//     Integer[] array1 = new list<Integer>();
-// array1.add(1);
-// array1.add(2);
-// array1.add(3);
-// array1.add(4);
-// array1.add(5);
-// system.debug(ApexP0Exercises.rotateLeftNTimes(array1, 3));
 
      /* 5. Balanced Brackets
       * A bracket is any one of the following: (, ), {, }, [, or ]
@@ -118,29 +111,103 @@ public class ApexP0Exercises {
       * Return false if not balanced
       */
       public static Boolean bracketsAreBalanced(String s) {
-          List<String> stack = new List<String>;
-          stack.add(s.charAt(0));  
+            List<String> stack = new List<String>();
+            bool isBalanced = true;
 
-          for(Integer i = 1; i < s.size(); i++){
-              if(stack.get(0) = s.charAt(i)){
-                  
-              }
-          }
+            for(Integer i = 0; i < s.size(); i++){
+                if(s.charAt(i) == '('){
+                    stack.add('(');
+                }else if(s.charAt(i) == '['){
+                    stack.add('[');
+                }else if(s.charAt(i) == '{'){
+                    stack.add('{');
+                }else if(s.charAt(i) == ')'){
+                    for(String s: stack){
+                        if(stack.isEmpty()){
+                            return false;
+                        }else if(){
 
-        //   for(Integer i = 0; i <= s.length(); i++){
-        //       for(Integer j = 1; j <= s.length(); j++){
-        //         if(s.charAt(i) == '('){
-        //             if(s.charAt(j) !=)
-        //         }else if(s.charAt(i) == '['){
+                        }
+                    }
+                }else if(s.charAt(i) == ']'){
 
-        //         }else if(s.charAt(i) == '{'){
-              
-        //         }
-        //       }
-        //   }
+                }else if(s.charAt(i) == '}'){
 
-        //   return true;
+                }
+            }
+
+            return isBalanced;
       }
+
+      }
+
+                // 6. Create a method that retrieves a list of all accounts and updates those accounts.
+            //     Create a custom field on the Account standard object called Size__c that will be a 
+            //     picklist containing small/medium/large.
+            //     Create a method that retrieves a list of all accounts. 
+            //         - If an account has between 1-1000 employees then it is classified as small.
+            //         - If an account has between 1001-10000 employees it is classified as medium.
+            //         - If an account has more than 10000 employees it is classified as large.
+            //     Update the Size__c field on each account to reflect the amount of employees in the Account.
+
+
+            public class QuestionSix {
+                public static void account(){
+                    List<Account> acc = new List<Account>();
+                    
+                    for(Account c: [SELECT Id, Size__c, NumberOfEmployees FROM Account]){
+                        if(c.NumberOfEmployees >= 1 && c.NumberOfEmployees <= 1000){
+                            c.Size__c = 'small';
+                        }
+                        else if(c.NumberOfEmployees >= 1001 && c.NumberOfEmployees <= 10000){
+                            c.Size__c = 'medium';
+                        }
+                        else if(c.NumberOfEmployees > 10000){
+                            c.Size__c = 'large';
+                        }
+                        
+                        acc.add(c);
+                    }
+                    
+                    database.update(acc);
+                    //update acc;
+                    
+                    
+                }
+            }
+
+        /* 
+        * 7. Create a method that will find all leads that contain 'ca' in their fields. 
+        * If a lead is located in California(CA), change their Lead Status field to 'Closed - Not 
+        * Converted' and their description should display the message, "We are no longer doing 
+        * business in California."
+        */
+        public static void updateCALeads( ) {
+            List<Lead> l = [SELECT Status, Description FROM Lead WHERE Address LIKE '%ca%'];
+
+            for(Lead lea: l){
+                lea.Status = 'Closed - Not Converted';
+                lea.Description = 'We are no longer doing business in California.'
+            }
+
+            update l;
+        }
+
+        /*
+        * 8. Create a method that will find all Opportunities which have already passed their Close Date 
+        * and have a Stage field that is not 'Closed Won'. Since they have passed their Close Date and 
+        * they are not marked as 'Closed Won', they should be marked as 'Closed Lost'.
+        */
+        public static void closePastDueOpportunities( ) {
+            List<Opportunities> opp = [SELECT CloseDate, StageName FROM Opportunities WHERE CloseDate < TODAY];
+
+            for(Opportunities o: opp){
+                o.StageName = 'Closed Lost';
+            }
+
+            update opp;
+        }
+
 
     
 }

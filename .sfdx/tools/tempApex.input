@@ -1,1 +1,2 @@
-system.debug(ApexP0Exercises.bracketsAreBalanced('(('));
+//classwork c = new classwork();
+system.debug(classwork.rotateLeftNtimes(new List<Integer>{1,2,3,4,5},2));
