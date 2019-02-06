@@ -4,7 +4,7 @@
 //	Date: 2/4/2019
 //////////////////////////////////
 
-public class classwork{
+public class bankingApp{
 
    public class Project0BankingApp {
     
